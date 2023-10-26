@@ -1,5 +1,6 @@
 import json
 import torch
+from codeguru_profiler_agent import with_lambda_profiler
 from transformers import AutoModelForQuestionAnswering, AutoTokenizer, AutoConfig
 
 def encode(tokenizer, question, context):
@@ -31,6 +32,7 @@ def serverless_pipeline(model_path='./model'):
 # initializes the pipeline
 question_answering_pipeline = serverless_pipeline()
 
+@with_lambda_profiler(profiling_group_name="serverless-bert")
 def handler(event, context):
     try:
         print(event)

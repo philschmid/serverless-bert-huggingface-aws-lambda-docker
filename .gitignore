@@ -21,3 +21,6 @@ var/
 model/*.json
 model/*.bin
 model/*.txt
+
+.DS_Store
+aws_deploy_commands.txt
